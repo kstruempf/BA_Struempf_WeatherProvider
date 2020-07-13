@@ -26,3 +26,4 @@ jobs:
           password: echo "${{ secrets.GITHUB_TOKEN }}"
           registry: docker.pkg.github.com
           path: ./WeatherProvider
+          tagging: true
