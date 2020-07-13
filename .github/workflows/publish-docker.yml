@@ -27,3 +27,4 @@ jobs:
           registry: docker.pkg.github.com
           repository: sirpumpkinhead/ba_struempf_weatherprovider/weather-provider
           tag_with_ref: true
+          path: ./WeatherProvider
