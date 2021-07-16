@@ -24,7 +24,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           repository: sirpumpkinhead/ba_struempf_weatherprovider/weather-provider
           tag_with_ref: true
           path: ./WeatherProvider
