@@ -2,7 +2,7 @@ name: Build and Release Docker Container
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, pre-release ]
   pull_request:
     branches: [ master ]
 env:
@@ -20,7 +20,7 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@master
 
-      - name: Build and push version ${{ steps.tag_version.outputs.new_tag }}
+      - name: Build Image
         uses: docker/build-push-action@v2
         with:
           context: ./WeatherProvider
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Bump version and push tag
+      - name: Bump version
         id: tag_version
         uses: mathieudutour/github-tag-action@v5.6
         with:
@@ -70,7 +70,7 @@ jobs:
       - name: Build and push version ${{ steps.tag_version.outputs.new_tag }}
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./WeatherProvider
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
